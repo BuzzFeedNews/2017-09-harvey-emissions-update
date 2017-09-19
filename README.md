@@ -1,8 +1,8 @@
-# Analysis of Harvey-related TCEQ emissions reports
+# Analysis of Harvey-related TCEQ emissions reports — September update
 
-This repository contains data and Python code used to analyze emissions reports submitted by industrial facilities to the Texas Commission on Environmental Quality's Air Emission Event Reporting Database.
+This repository contains data and Python code used to analyze emissions reports submitted by industrial facilities to the Texas Commission on Environmental Quality's Air Emission Event Reporting Database. It updates, and slightly expands, a [similar analysis from late August](https://github.com/BuzzFeedNews/2017-08-harvey-emissions-reports).
 
-Please see the [related article](https://www.buzzfeed.com/zahrahirji/damage-from-harvey-has-caused-millions-of-pounds-of-toxic) for additional context.
+Please see [this related article](https://www.buzzfeed.com/nidhisubbaraman/tropical-storm-harvey-emissions-pollution) for additional context.
 
 ## Table Of Contents
 
@@ -16,11 +16,13 @@ Please see the [related article](https://www.buzzfeed.com/zahrahirji/damage-from
 
 ## Inputs
 
-The main inputs are the __TCEQ emissions reports__, scraped from [the commission's database](http://www2.tceq.texas.gov/oce/eer/index.cfm?fuseaction=main.searchForm). We started with [report number 265500](http://www2.tceq.texas.gov/oce/eer/index.cfm?fuseaction=main.getDetails&target=265500) and incremented the report number until we could find no more reports. The raw report pages, as HTML files, are available in the [`inputs/scraped-reports`](inputs/scraped-reports) folder.
+The main inputs are the __TCEQ emissions reports__, scraped from [the commission's database](http://www2.tceq.texas.gov/oce/eer/index.cfm?fuseaction=main.searchForm). For __recent__ emissions reports, we started with [report number 265500](http://www2.tceq.texas.gov/oce/eer/index.cfm?fuseaction=main.getDetails&target=265500) and incremented the report number until we could find no more reports, as of the morning of Sept. 14, 2017. Those raw report pages, as HTML files, are available in the [`inputs/scraped-reports`](inputs/scraped-reports) folder.
+
+For the 48 facilities we identified as reporting Harvey-related emissions, we also scraped their reports of emissions events that began or ended in 2015 or 2016, using TCEQ's Central Registry ([e.g.](http://www15.tceq.texas.gov/crpub/index.cfm?fuseaction=iwr.eeincdetail&addn_id=895600322009251&re_id=177634852002163)). Those __historical__ emissions reports can be found in the  [`inputs/scraped-reports-historical`](inputs/scraped-reports-historical) folder.
 
 We also created a text file, [`disaster-declaration-counties.txt`](inputs/disaster-declaration-counties.txt), listing the 54 counties that Gov. Greg Abbott [included on the State Disaster Declaration through Aug. 27](https://gov.texas.gov/news/post/governor-abbott-adds-additional-4-texas-counties-to-state-disaster-declaration).
 
-Finally, the file [`reports-to-ignore.txt`](inputs/reports-to-ignore.txt) includes five emissions reports that either (a) predated Harvey's landfall and didn't clearly indicate a connection to the storm, or (b) appeared to be duplicative of previous reports.
+Finally, the file [`reports-to-ignore.txt`](inputs/reports-to-ignore.txt) includes emissions reports that, based on reporting, either appear to be duplicative of subsequent reports or appear to be unrelated to Harvey.
 
 ## Outputs
 
@@ -28,8 +30,10 @@ In the [`00-parse-reports`](notebooks/00-parse-reports.ipynb) notebook, we extra
 
 - [`outputs/report-metadata-raw.csv`](outputs/report-metadata-raw.csv)
 - [`outputs/report-emissions-raw.csv`](outputs/report-emissions-raw.csv)
+- [`outputs/report-metadata-raw-historical.csv`](outputs/report-metadata-raw-historical.csv)
+- [`outputs/report-emissions-raw-historical.csv`](outputs/report-emissions-raw-historical.csv)
 
-In the [`01-analyze-reports`](notebooks/01-analyze-reports.ipynb) notebook, we analyze the data extracted from the reports, limiting the findings to reports (a) in the 54 counties above, (b) indicating an event-beginning date of August 23 or later, and (c) of the type "AIR SHUTDOWN" or "EMISSIONS EVENT". The main results can be found in these two files:
+In the [`01-analyze-reports`](notebooks/01-analyze-reports.ipynb) notebook, we analyze the data extracted from the reports, limiting the findings to reports (a) in the 54 counties above, (b) indicating an event-beginning date of August 23 or later, and (c) of the type "AIR SHUTDOWN", "AIR STARTUP", or "EMISSIONS EVENT". The main results can be found in these two files:
 
 - [`outputs/largest-emissions-in-lbs.csv`](outputs/largest-emissions-in-lbs.csv)
 - [`outputs/facilities-with-most-emissions-lbs.csv`](outputs/facilities-with-most-emissions-lbs.csv)

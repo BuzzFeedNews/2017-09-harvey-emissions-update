@@ -2,4 +2,20 @@
 266073 # Appears to be an initial report, superceded by 266124
 266136 # Predates landfall and doesn't mention storm
 266156 # Predates landfall and doesn't mention storm
-266246  # Predates landfall and doesn't mention storm
+266246 # Predates landfall and doesn't mention storm
+267665 # Appears not to be Harvey-related
+266648 # Appears not to be Harvey-related
+267063 # Appears not to be Harvey-related
+266274 # Appears not to be Harvey-related
+266338 # Appears not to be Harvey-related
+266966 # Appears not to be Harvey-related
+267240 # Appears not to be Harvey-related
+267389 # Appears not to be Harvey-related
+267394 # Appears not to be Harvey-related
+267398 # Unclear if Harvey-related
+267624 # Appears not to be Harvey-related
+266675 # Unclear if Harvey-related
+267677 # Appears not to be Harvey-related
+267253 # Appears to be a duplicate of 266817
+266301 # Unclear if Harvey-related
+266266 # Unclear if Harvey-related
